@@ -1,0 +1,12 @@
+$global-font: 'Open Sans';
+$global-font-size: 18px;
+$global-line-size: 24px;
+$global-bg-color: lightgray;
+
+
+body {
+  font-family: $global-font;
+  font-size: $global-font-size;
+  line-height: $global-line-size;
+  background-color: $global-bg-color;
+}

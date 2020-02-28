@@ -1,0 +1,21 @@
+.footer {
+
+  background-color: gray;
+  padding: 20px 0;
+  margin-top: 20px;
+
+  .list {
+    max-width: 250px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  
+    li {
+      margin-right: 50px;
+    }
+  
+  }
+
+}
+

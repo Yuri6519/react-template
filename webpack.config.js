@@ -11,12 +11,12 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        include: /src.icons/,
+        include: /src.assets.icons/,
         use: [
           {
             loader: '@svgr/webpack',
             
-            // лечим svg без viewport
+            // лечим svg без viewbox
             options: {
               template: (
                 { template },
@@ -24,7 +24,7 @@ module.exports = {
                 { imports, componentName, props, jsx, exports }
               ) => template.ast`
                 ${imports}
-                import useWithViewbox from '../useWithViewbox';
+                import useWithViewbox from '../../utils/useWithViewbox';
                 const ${componentName} = (${props}) => {
                   const ref = React.useRef();
                   useWithViewbox(ref);
@@ -37,6 +37,15 @@ module.exports = {
           }
         ]
       },
+
+      // alternative => npm install react-svg-loader --save-dev
+      // {
+      //   loader: 'react-svg-loader',
+      //   options: {
+      //     jsx: true // true outputs JSX tags
+      //   }
+      // }
+
       {
         test: /\.(scss|sass)$/,
         use: [
@@ -53,17 +62,20 @@ module.exports = {
       {
         test:  /\.(woff|woff2)$/,
         use: ['url-loader']
+      },
+      {
+        test:  /\.(jpg|png|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              // name: '[path][name]-[hash:8].[ext]'
+              name: 'images/[name]-[hash:8].[ext]'
+            }
+
+          }
+        ]
       }
-
-
-      // alternative => npm install react-svg-loader --save-dev
-      // {
-      //   loader: 'react-svg-loader',
-      //   options: {
-      //     jsx: true // true outputs JSX tags
-      //   }
-      // }
-
     ]
   },
   resolve: {

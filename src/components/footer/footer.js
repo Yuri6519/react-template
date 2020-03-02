@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
-import FIcon from '../../icons/facebook.svg';
-import GIcon from '../../icons/github.svg';
-import TIcon from '../../icons/twitter.svg';
+import FIcon from '../../assets/icons/facebook.svg';
+import GIcon from '../../assets/icons/github.svg';
+import TIcon from '../../assets/icons/twitter.svg';
+import bgImg from '../../assets/images/intro-bg-min.jpg';
 
 import st from './style.scss';
 
@@ -22,6 +23,10 @@ export default () => (
 
       <li>
         <TIcon width={`${SIZE}px`} height={`${SIZE}px`}/>
+      </li>
+
+      <li>
+        <img src={bgImg}  alt="bg" width={`${SIZE}px`} height={`${SIZE}px`}/>
       </li>
 
     </ul>

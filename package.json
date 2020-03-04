@@ -7,9 +7,9 @@
     "svgr": "svgr -d src/Icons/ assets/",
     "test": "echo \"No test specified\" && exit 0",
     "serv": "static dist",
-    "build": "webpack --config ./webpack.prod.js",
+    "build": "webpack --config ./build-utils/webpack.config.js --env.env=prod",
     "prod": "npm run build & npm run serv",
-    "start": "webpack-dev-server --config ./webpack.dev.js"
+    "start": "webpack-dev-server --config ./build-utils/webpack.config.js --env.env=dev"
   },
   "keywords": [],
   "author": "",
@@ -33,7 +33,8 @@
     "url-loader": "^3.0.0",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
     "react": "^16.8.6",

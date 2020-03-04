@@ -1,10 +1,9 @@
+const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'eval-source-map',
   entry: './src/index.js',
   module: {
     rules: [
@@ -41,15 +40,6 @@ module.exports = {
           }
         ]
       },
-
-      // alternative => npm install react-svg-loader --save-dev
-      // {
-      //   loader: 'react-svg-loader',
-      //   options: {
-      //     jsx: true // true outputs JSX tags
-      //   }
-      // }
-
       {
         test: /\.(scss|sass)$/,
         use: [
@@ -73,7 +63,6 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              // name: '[path][name]-[hash:8].[ext]'
               name: 'images/[name]-[hash:8].[ext]'
             }
 
@@ -85,11 +74,6 @@ module.exports = {
   resolve: {
     extensions: ['*', '.js', '.jsx']
   },
-  output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -98,9 +82,9 @@ module.exports = {
       template: './src/index.html'
     })
   ],
-  devServer: {
-    contentBase: './dist',
-    port: 9000,
-    hot: true
+  output: {
+    path: path.resolve(__dirname, '../', 'dist'),
+    publicPath: '/',
+    filename: 'bundle.js'
   }
 };

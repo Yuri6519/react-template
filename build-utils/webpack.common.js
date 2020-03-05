@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -24,6 +25,7 @@ module.exports = {
               template: (
                 { template },
                 opts,
+                // eslint-disable-next-line no-unused-vars
                 { imports, componentName, props, jsx, exports },
               ) => template.ast`
                 ${imports}

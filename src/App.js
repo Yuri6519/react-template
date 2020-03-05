@@ -1,7 +1,13 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { Suspense } from 'react';
+import loadable from '@loadable/component';
 import { string } from 'prop-types';
-import { Footer } from './components/footer';
+// import { Footer } from './components/footer';
 import Main from './components/main';
+
+const Footer = loadable(() => import('./components/footer/'));
+
+// const Footer = React.lazy(() => import('./components/footer/footer'));
 
 const App = ({ title }) => {
   App.propTypes = {
@@ -12,7 +18,10 @@ const App = ({ title }) => {
     <>
       <div>{title}</div>
       <Main />
-      <Footer />
+
+      <Suspense fallback={<div>Загрузка...</div>}>
+        <Footer />
+      </Suspense>
     </>
   );
 };

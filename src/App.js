@@ -1,17 +1,20 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { string } from 'prop-types';
 import { Footer } from './components/footer';
-import Main from './components/main'
-
+import Main from './components/main';
 
 const App = ({ title }) => {
+  App.propTypes = {
+    title: string.isRequired,
+  };
+
   return (
-    <Fragment>
+    <>
       <div>{title}</div>
       <Main />
       <Footer />
-    </Fragment>
-  )  
-}
-
+    </>
+  );
+};
 
 export default App;

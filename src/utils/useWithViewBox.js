@@ -1,4 +1,5 @@
 import React from 'react';
+
 const useWithViewbox = ref => {
   React.useLayoutEffect(() => {
     if (
@@ -16,7 +17,7 @@ const useWithViewbox = ref => {
       const box = ref.current.getBBox();
       ref.current.setAttribute(
         'viewBox',
-        [box.x, box.y, box.width, box.height].join(' ')
+        [box.x, box.y, box.width, box.height].join(' '),
       );
     }
   });

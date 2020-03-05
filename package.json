@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "fix": "eslint --fix ./src/",
     "svgr": "svgr -d src/Icons/ assets/",
     "test": "echo \"No test specified\" && exit 0",
     "serv": "static dist",
@@ -20,9 +21,19 @@
     "@babel/preset-react": "^7.0.0",
     "@svgr/cli": "^5.2.0",
     "@svgr/webpack": "^5.2.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^5.1.0",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.13.1",
@@ -37,6 +48,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }

@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -10,7 +10,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.svg$/,
@@ -18,13 +18,13 @@ module.exports = {
         use: [
           {
             loader: '@svgr/webpack',
-            
+
             // лечим svg без viewbox
             options: {
               template: (
                 { template },
                 opts,
-                { imports, componentName, props, jsx, exports }
+                { imports, componentName, props, jsx, exports },
               ) => template.ast`
                 ${imports}
                 import useWithViewbox from '../../utils/useWithViewbox';
@@ -37,8 +37,8 @@ module.exports = {
                 export default ${componentName};
               `,
             },
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.(scss|sass)$/,
@@ -47,44 +47,43 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              'modules': true
-            }
+              modules: true,
+            },
           },
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
-        test:  /\.(woff|woff2)$/,
-        use: ['url-loader']
+        test: /\.(woff|woff2)$/,
+        use: ['url-loader'],
       },
       {
-        test:  /\.(jpg|png|gif)$/,
+        test: /\.(jpg|png|gif)$/,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[name]-[hash:8].[ext]'
-            }
-
-          }
-        ]
-      }
-    ]
+              name: 'images/[name]-[hash:8].[ext]',
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['*', '.js', '.jsx'],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Webpack bundled JS Project',
-      template: './src/index.html'
-    })
+      template: './src/index.html',
+    }),
   ],
   output: {
     path: path.resolve(__dirname, '../', 'dist'),
     publicPath: '/',
-    filename: 'bundle.js'
-  }
+    filename: 'bundle.js',
+  },
 };
